@@ -1,4 +1,3 @@
-# Blizz-Nameplates+ - Beta-Release
 # Blizz Nameplates+
 
 Blizz Nameplates+ enhances the original Blizzard nameplates for Vanilla WoW while keeping the classic look.
