@@ -1,70 +1,90 @@
 # Blizz Nameplates+
 
-Blizz Nameplates+ enhances the original Blizzard nameplates for Vanilla WoW while keeping the classic look.
+**Blizz Nameplates+** enhances the original Blizzard nameplates for Vanilla WoW while keeping the classic look and feel.
 
-## Features
+## ✨ Features
 
-- Personal debuff and CC tracking
+- Personal debuff & CC tracking
 - Accurate debuff timers
-- Early removal detection for broken, dispelled or removed effects
 - Multi-target tracking
+- Automatic removal of broken, dispelled or expired effects
+- Support for custom / Turtle WoW spells
 - Class-colored player nameplates
 - Nameplate castbars with spell icons
 - Nameplate scaling
-- Support for custom/Turtle WoW spells
-- Beta collector for discovering missing spell effects
-- SuperWoW support
+- Built-in beta collector for discovering missing spell effects
 
-## Versions
+---
+
+## 📦 Two Versions Available
 
 ### Standalone Edition
 
 No ShaguTweaks required.
 
 Includes:
-- Debuff/CC tracking
+
+- Debuff & CC tracking
 - Class colors
 - Nameplate scaling
-- Castbars
+- Castbars with spell icons
 
 ### ShaguTweaks Edition
 
-For players who already use ShaguTweaks.
+For players who already use **ShaguTweaks**.
 
-ShaguTweaks handles the additional nameplate features such as scaling, class colors and castbars, while Blizz Nameplates+ provides the debuff/CC tracking.
+ShaguTweaks handles the additional nameplate features such as class colors, scaling and castbars, while **Blizz Nameplates+** provides the debuff & CC tracking.
 
-## Requirements
+---
 
-**SuperWoW is required.**
+## ⚠️ Requirements
 
-The ShaguTweaks Edition additionally requires **ShaguTweaks**.
+**SuperWoW is required for both versions.**
 
-## Missing a spell?
+The **ShaguTweaks Edition** additionally requires ShaguTweaks.
 
-The addon includes a beta collector to help identify missing or custom spell effects.
+---
 
-Use:
+## 🔍 Missing a Spell?
+
+Blizz Nameplates+ includes a beta collector to help find missing or custom spell effects.
+
+If a debuff or CC is missing, use the spell and enter:
 
 `/bnp unknown`
 
-If an effect is missing, use the spell and send a screenshot of the output.
+Then take a screenshot of the output and include it in your bug report.
 
 For additional diagnostic information:
 
 `/bnp unknown verbose`
 
-## Commands
+Reset collected data with:
 
-`/bnp` - Show available commands  
-`/bnp unknown` - Show unknown spell/effect data  
-`/bnp unknown reset` - Clear collected data  
-`/bnp classcolors on/off` - Toggle class colors (Standalone)  
-`/bnp castbars on/off` - Toggle castbars (Standalone)  
-`/bnp scale <0.5-1.5>` - Change nameplate scale (Standalone)  
-`/bnp scale reset` - Reset nameplate scale
+`/bnp unknown reset`
 
-## Beta
+---
 
-Blizz Nameplates+ is currently in beta.
+## ⚙️ Standalone Commands
 
-If you find a missing spell, incorrect timer or other issue, please report it.
+`/bnp classcolors on/off`  
+Enable or disable player class colors.
+
+`/bnp castbars on/off`  
+Enable or disable nameplate castbars.
+
+`/bnp scale <0.5-1.5>`  
+Change the nameplate scale.
+
+`/bnp scale reset`  
+Reset nameplate scaling.
+
+---
+
+## 🧪 Beta
+
+Blizz Nameplates+ is currently in **Beta**.
+
+If you find a missing spell, incorrect timer, broken CC detection or another issue, please report it.
+
+Feedback and testing from different classes is greatly appreciated!
