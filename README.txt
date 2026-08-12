@@ -1,278 +1,254 @@
-Blizz Nameplates+ v1.0.3
-
-A lightweight enhancement for the original Blizzard nameplates in
-Vanilla WoW / 1.12.
-
-Blizz Nameplates+ keeps the classic Blizzard look while adding modern
-quality-of-life features such as personal debuff tracking, castbars,
-health percentages, target highlighting, class colors and tank-oriented
-nameplate information.
-
-Author: Wurmschwanz
-
-FEATURES
-
-DEBUFF TRACKING
-
--   Tracks your own debuffs directly on enemy nameplates.
--   GUID-based tracking through SuperWoW prevents same-name target
-    collisions.
--   Supports class debuffs, DoTs, curses, crowd control, traps, roots,
-    stuns and other supported effects.
--   Up to 8 tracked effects can be displayed on a nameplate.
--   Debuffs remain attached to the correct enemy when changing targets.
--   Active icons are packed together in application order.
--   Numeric countdown timers are displayed directly on the icons.
--   Long durations use compact labels such as 5m, 4m, 3m, 2m and 1m.
--   Real stacking debuffs can display their current stack count.
--   Miss, Dodge, Resist, Immune and Evade do not create false debuff
-    timers.
--   Early removal is supported for effects that are dispelled, broken or
-    otherwise removed.
--   Conservative removal logic protects normal DoTs and curses from
-    temporary incomplete aura scans.
--   Same-name enemy deaths no longer remove debuffs from surviving mobs.
--   Nameplate GUID stability protection prevents brief “ghost DoTs” when
-    Blizzard/SuperWoW recycles plates during line-of-sight changes.
-
-HUNTER’S MARK
-
--   Hunter’s Mark is treated as a shared tracking exception.
--   A mark applied by another Hunter can also be displayed.
--   Own Hunter’s Mark uses normal BNP timing.
--   Foreign Hunter’s Mark uses real expiration information when
-    available.
--   If exact expiration information is unavailable, BNP uses a local
-    duration estimate while still removing the icon from the actual live
-    aura state.
-
-PALADIN SUPPORT
-
--   Supports Judgement of Light.
--   Supports Judgement of Wisdom.
--   Supports Judgement of Justice.
--   Supports Judgement of the Crusader.
--   Existing own Judgement timers can refresh from successful melee
-    attacks.
--   Holy Strike can refresh an already active own Judgement.
-
-WARRIOR AOE SUPPORT
-
-Improved per-target confirmation for: - Demoralizing Shout - Thunder
-Clap - Piercing Howl - Challenging Shout
-
-Each visible target is confirmed individually so resisted or unaffected
-enemies do not receive false indicators.
-
-CASTBARS
-
--   Standalone nameplate castbars.
--   Uses SuperWoW casting/channel information.
--   Casts fill from left to right.
--   Channels drain from right to left.
--   Active spell icon is displayed beside the castbar.
--   Compact layout spans the full visual width of the nameplate.
--   Castbar height can be adjusted in the options.
--   Only active castbars are animated every rendered frame.
+# Blizz Nameplates+
 
-TARGET GLOW
+**Blizz Nameplates+** is a lightweight enhancement for the original Blizzard nameplates in **Vanilla WoW / 1.12**.
 
--   Optional Target Glow makes the current target immediately
-    recognizable.
--   Glow is centered around the full visible nameplate, including the
-    level area.
--   Available colors:
-    -   White
-    -   Gold
-    -   Blue
-    -   Green
-    -   Red
-    -   Purple
+The goal is simple: **keep the classic Blizzard look while adding useful modern nameplate features** without turning the UI into a completely different nameplate system.
 
-HEALTH %
+> **Current Version:** v1.0.3
+> **Requires:** SuperWoW
 
--   Optional health percentage displayed directly inside the healthbar.
--   Read-only implementation avoids interfering with Blizzard healthbar
-    behavior.
--   Positioned for optical centering on the full nameplate.
+---
 
-CLASS COLORS
+## ✨ Features
 
--   Player nameplates can use class colors.
--   Colors are restored if Blizzard attempts to overwrite them during
-    combat.
--   NPC colors remain controlled by Blizzard unless Tank Mode is
-    actively changing them.
+### 🩸 Debuff Tracking
 
-TANK MODE
+* Displays your own debuffs directly above enemy nameplates.
+* GUID-based multi-target tracking.
+* Debuffs remain attached to the correct enemy when switching targets.
+* Supports DoTs, curses, crowd control, roots, traps, stuns and other supported effects.
+* Displays up to **8 active tracked effects** per nameplate.
+* Icons automatically pack together in application order.
+* Numeric countdown timers directly on the icons.
+* Long durations use compact labels such as `5m`, `4m`, `3m`, `2m` and `1m`.
+* Stack counters for genuinely stacking debuffs.
+* Miss, Dodge, Resist, Immune and Evade do not create false debuff timers.
+* Early removal support for dispels, broken CC and effects that end before their normal duration.
+* Same-name enemies are tracked independently.
+* Additional GUID safeguards prevent temporary nameplate recycling from displaying debuffs on the wrong enemy.
 
--   Optional Tank Mode for hostile NPC nameplates.
--   Designed to make threat-related nameplate states easier to
-    recognize.
--   Recycled nameplates are safely reset to avoid stale colors.
+---
 
-FOREIGN TAGGED MOBS
+### 🎯 Target Glow
 
--   Hostile mobs tagged by players outside your party or raid are shown
-    with a neutral grey healthbar.
--   Uses the actual Vanilla tap/tag ownership state.
--   Untapped mobs and mobs tagged by you, your party or your raid remain
-    normal.
--   Works independently from Tank Mode.
--   A foreign-tagged current target remains grey while retaining normal
-    target visibility.
+The current target can be highlighted with a clearly visible glow around the entire nameplate.
 
-TARGET PLATE ON TOP
+Available colors:
 
--   Optional setting to raise the current target nameplate above
-    overlapping plates.
--   Uses safe Vanilla-compatible frame strata.
--   Debuffs, castbar and health percentage retain their normal internal
-    draw order.
+* White
+* Gold
+* Blue
+* Green
+* Red
+* Purple
 
-NAMEPLATE SCALE
+The glow is centered around the complete visible nameplate, including the level area.
 
--   Adjustable nameplate scale.
--   Uses a Shagu-style visual wrapper so the original world-positioned
-    Blizzard frame is not incorrectly scaled.
--   Default multiplier: 1.0
--   Supported range: 0.5 to 1.5
+---
 
-SHAGUTWEAKS COMPATIBILITY
+### ❤️ Health Percentage
 
-Blizz Nameplates+ is fully standalone.
+Optionally displays the enemy's current health percentage directly inside the healthbar.
 
-ShaguTweaks is NOT required.
+Designed to preserve the original Blizzard nameplate appearance.
 
-If ShaguTweaks is installed, BNP includes compatibility handling for its
-nameplate modules and Darkened UI styling without modifying ShaguTweaks
-saved settings.
+---
 
-REQUIREMENTS
+### 🔮 Castbars
 
-SuperWoW is required.
+Adds standalone castbars directly to enemy nameplates.
 
-Blizz Nameplates+ relies on SuperWoW GUID/unit information for reliable
-multi-target tracking and nameplate functionality.
+* Normal casts fill from left to right.
+* Channels drain from right to left.
+* Active spell icon displayed beside the castbar.
+* Compact layout aligned with the full nameplate width.
+* Adjustable castbar height.
+* Smooth castbar animation.
 
-INSTALLATION
+---
 
-MANUAL INSTALLATION
+### 🎨 Player Class Colors
 
-1.  Delete any old BlizzNameplatesPlus folder from your AddOns
-    directory.
+Player nameplates can automatically use their class color.
 
-2.  Extract the new version.
+NPC nameplate colors remain unchanged unless another BNP feature intentionally modifies them.
 
-3.  Copy the BlizzNameplatesPlus folder into:
+---
 
-    Interface
+### 🛡️ Tank Mode
 
-4.  The final path should look like:
+Optional Tank Mode provides additional visual information for hostile NPC nameplates.
 
-    Interface.toc
+Nameplate state is safely reset when Blizzard recycles frames to prevent stale colors from appearing on unrelated enemies.
 
-5.  Start the game or use /reload if appropriate.
+---
 
-GIT / ADDON MANAGERS
+### ⚔️ Foreign Tagged Mobs
 
-The current addon files are maintained directly in the repository’s main
-branch.
+Mobs already tagged by players **outside your party or raid** are automatically displayed with a neutral **grey healthbar**.
 
-Git-based addon managers can therefore install and update Blizz
-Nameplates+ directly from the repository instead of relying on GitHub
-Release ZIP files.
+This makes it easy to immediately recognize enemies that have already been claimed by another player.
 
-Manual users can continue using the packaged ZIP from GitHub Releases.
+* Untapped mobs remain unchanged.
+* Mobs tagged by you remain unchanged.
+* Party/Raid tagged mobs remain unchanged.
+* Works independently from Tank Mode.
+* A foreign-tagged current target remains grey while retaining normal target visibility.
 
-OPTIONS
+---
 
-Open the configuration menu with: /bnp /bnp config
+### ⬆️ Target Plate on Top
 
-The addon also includes a movable BN+ minimap button.
+Optionally raises your current target above overlapping nameplates.
 
-Available options include: - Nameplate Scale - Debuff Icon Size - Class
-Colors - Castbars - Castbar Height - Tank Mode - Health % - Target
-Glow - Target Glow Color - Target Plate on Top
+Debuff icons, castbars and health information remain clearly visible even when several nameplates overlap.
 
-COMMANDS
+---
 
-/bnp Open the options menu.
+### 🏹 Shared Hunter's Mark
 
-/bnp config Open the options menu.
+Hunter's Mark is supported as a shared tracking exception.
 
-/bnp status Display addon status information.
+A Hunter's Mark applied by another Hunter can also be displayed, while other debuffs continue to follow the normal tracking rules.
 
-/bnp debug on Enable debug output.
+Timer information is used when available.
 
-/bnp debug off Disable debug output.
+---
 
-/bnp unknown Show useful unknown negative aura/effect information for
-reporting missing custom spells.
+### 📏 Nameplate Scaling
 
-/bnp unknown verbose Show additional raw cast information for developer
-troubleshooting.
+Adjust the size of Blizzard nameplates directly through the addon.
 
-/bnp unknown reset Clear collected unknown spell information.
+**Range:** `0.5 – 1.5`
+**Default:** `1.0`
 
-/bnp direct Show collected direct player spell events.
+---
 
-/bnp guid Display SuperWoW GUID information for the current
-target/nameplate.
+## 🔍 Reliable Multi-Target Tracking
 
-/bnp spelldb Display SpellDB audit information.
+Blizz Nameplates+ includes several safeguards specifically designed for Vanilla nameplate behavior:
 
-/bnp spelldb reset Reset SpellDB audit counters.
+* GUID-based aura tracking.
+* Same-name enemies remain separated.
+* The death of one enemy does not remove tracked debuffs from surviving enemies with the same name.
+* Conservative DoT and curse removal prevents temporary incomplete aura information from deleting valid effects.
+* Nameplate GUID stability checks prevent brief **ghost debuffs** when nameplates are recycled during visibility or line-of-sight changes.
+* Failed attacks do not create false debuff indicators.
 
-PERFORMANCE
+---
+
+# 📦 Requirements
+
+## SuperWoW
+
+**SuperWoW is required to use Blizz Nameplates+.**
+
+The addon relies on the additional GUID and unit information provided by SuperWoW for reliable multi-target debuff tracking, castbars and other nameplate functionality.
+
+Without SuperWoW, Blizz Nameplates+ cannot provide reliable unit identification and is therefore not supported.
+
+---
+
+# 📥 Installation
+
+1. Download the latest **Blizz Nameplates+** release.
+2. Delete any existing `BlizzNameplatesPlus` folder from your AddOns directory.
+3. Extract the downloaded archive.
+4. Copy the `BlizzNameplatesPlus` folder into:
+
+`Interface\AddOns\`
+
+The final path should look like:
+
+`Interface\AddOns\BlizzNameplatesPlus\BlizzNameplatesPlus.toc`
+
+Start the game afterwards.
+
+---
+
+# ⚙️ Configuration
+
+Open the configuration menu using the **BN+ minimap button** or:
+
+`/bnp`
+
+Available options include:
+
+* Nameplate Scale
+* Debuff Icon Size
+* Class Colors
+* Castbars
+* Castbar Height
+* Tank Mode
+* Health %
+* Target Glow
+* Target Glow Color
+* Target Plate on Top
+
+Changes are applied immediately.
+
+---
+
+# 🔎 Missing Spell Reporting
+
+Blizz Nameplates+ includes a small diagnostic collector to help identify missing or custom debuffs.
+
+If a spell or debuff is not being detected correctly, use:
+
+`/bnp unknown`
+
+This displays collected unknown negative aura/effect information that can be reported to the developer.
+
+For additional diagnostic information when specifically requested:
+
+`/bnp unknown verbose`
+
+To clear the collected information:
+
+`/bnp unknown reset`
+
+A screenshot of the output is usually enough for reporting a missing spell.
+
+---
+
+# ⚡ Performance
 
 Blizz Nameplates+ is designed to keep permanent background work low.
 
--   Aura confirmation work runs only when required.
--   No permanent high-frequency scan was added for Target Glow or
-    foreign-tag detection.
--   Only active castbars animate every rendered frame.
--   Cast discovery is throttled.
--   Timer text updates only when the displayed value changes.
--   GUID stability protection affects rendering only and does not add
-    extra UnitDebuff scans.
--   ShaguTweaks Darkened UI compatibility uses limited recycle-time
-    updates instead of a permanent scanner.
+* Aura confirmation work runs only when required.
+* Target Glow does not require an additional permanent scanning loop.
+* Foreign-tag detection uses existing nameplate state.
+* Only active castbars are animated every rendered frame.
+* Cast discovery is throttled.
+* Timer text updates only when the displayed value changes.
+* GUID stability protection affects rendering only and does not add additional aura scans.
 
-v1.0.3 HIGHLIGHTS
+---
 
--   Added configurable Target Glow with six color presets.
--   Added grey healthbars for mobs tagged outside your party/raid.
--   Added shared Hunter’s Mark support including timer handling.
--   Added generic stack counters for genuinely stacking debuffs.
--   Improved Warrior AoE debuff confirmation.
--   Improved strict Miss/Dodge/Resist/Immune/Evade handling.
--   Improved Paladin Judgement support and refresh behavior.
--   Added Health % display.
--   Added Target Plate on Top.
--   Improved castbar layout and performance.
--   Improved ShaguTweaks compatibility and Darkened UI recycling.
--   Fixed SetFrameStrata(“UNKNOWN”) errors.
--   Fixed debuffs disappearing when another mob with the same name dies.
--   Improved normal DoT/curse removal reliability.
--   Added GUID stability protection against temporary ghost debuffs
-    during nameplate recycling.
+# 🚀 v1.0.3 Highlights
 
-THANK YOU
+* 🎯 Configurable Target Glow with six color presets.
+* ⚔️ Grey healthbars for mobs tagged outside your party/raid.
+* 🏹 Shared Hunter's Mark tracking.
+* 🛡️ Stack counters for genuinely stacking debuffs.
+* 🩸 Improved debuff confirmation and removal reliability.
+* ❤️ Optional Health % display.
+* ⬆️ Target Plate on Top.
+* 🔮 Improved castbar layout and performance.
+* 🔧 Fixed false debuffs after Miss, Dodge, Resist, Immune or Evade.
+* 💀 Fixed debuffs disappearing when another mob with the same name dies.
+* 🔍 Added GUID stability protection against temporary ghost debuffs during nameplate recycling.
 
-A huge thank you to everyone who helped test Blizz Nameplates+, reported
-bugs, shared feedback and helped improve the addon.
+---
 
-Your testing and feedback have been incredibly helpful in making the
-addon more reliable and polished.
+# ❤️ Special Thanks
 
-CREDITS
+A huge thank you to **everyone who helped test Blizz Nameplates+**, reported bugs, shared feedback and helped improve the addon!
 
-Blizz Nameplates+ Author / Publisher: Wurmschwanz
+Your testing and feedback have been incredibly helpful in making the addon more reliable and polished. ❤️
 
-Shagu / ShaguTweaks / ShaguPlates: Referenced during development for
-Vanilla nameplate behavior, compatibility patterns and selected
-nameplate/debuff implementation concepts.
+---
 
-SuperWoW: Provides the GUID and extended unit functionality required for
-reliable multi-target tracking.
+# 👤 Author
+
+**Wurmschwanz**
