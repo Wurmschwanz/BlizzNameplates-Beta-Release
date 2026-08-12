@@ -2,9 +2,9 @@
 
 **Blizz Nameplates+** enhances the original Blizzard nameplates for **Vanilla WoW / 1.12** while keeping their classic look and feel.
 
-It adds modern quality-of-life features such as **multi-target debuff tracking, castbars, target highlighting, health percentages, class colors and Tank Mode** without replacing the original Blizzard nameplate design.
+It adds modern quality-of-life features such as **multi-target debuff tracking, castbars, target highlighting, health information, class colors and Tank Mode** without replacing the original Blizzard nameplate design.
 
-**Current Version:** `v1.0.3`
+**Current Version:** `v1.0.4`  
 **Required:** `SuperWoW`
 
 ---
@@ -15,15 +15,15 @@ It adds modern quality-of-life features such as **multi-target debuff tracking, 
 
 Track your own debuffs directly above enemy nameplates.
 
-* GUID-based multi-target tracking
-* Up to **8 active debuffs** per nameplate
-* DoTs, curses, CC, roots, traps, stuns and other supported effects
-* Numeric countdown timers
-* Compact minute timers for long effects
-* Stack counters for genuinely stacking debuffs
-* Debuffs stay attached to the correct enemy when switching targets
-* Same-name enemies are tracked independently
-* Early removal when supported effects are dispelled or broken
+- GUID-based multi-target tracking
+- Up to **8 active debuffs** per nameplate
+- DoTs, curses, CC, roots, traps, stuns and other supported effects
+- Numeric countdown timers
+- Compact minute timers for long effects
+- Stack counters for genuinely stacking debuffs
+- Debuffs stay attached to the correct enemy when switching targets
+- Same-name enemies are tracked independently
+- Early removal when supported effects are dispelled or broken
 
 Failed attacks are handled correctly:
 
@@ -45,11 +45,21 @@ The glow is centered around the entire visible nameplate, including the level ar
 
 ---
 
-## ❤️ Health Percentage
+## ❤️ Health Text
 
-Optionally display the enemy's current **Health %** directly inside the Blizzard healthbar.
+Optionally display health information directly inside the Blizzard healthbar.
 
-Designed to remain simple and readable while preserving the original nameplate style.
+Choose between:
+
+**Off • Percent • HP • HP + Percent**
+
+Examples:
+
+- **Percent:** `73%`
+- **HP:** `3.5k`
+- **HP + Percent:** `3.5k | 73%`
+
+Large health values are displayed in a compact format to keep the original nameplates readable.
 
 ---
 
@@ -57,12 +67,12 @@ Designed to remain simple and readable while preserving the original nameplate s
 
 See enemy casts directly underneath their nameplates.
 
-* Normal casts fill from left to right
-* Channels drain from right to left
-* Active spell icon
-* Smooth animation
-* Compact full-width layout
-* Adjustable castbar height
+- Normal casts fill from left to right
+- Channels drain from right to left
+- Active spell icon
+- Smooth animation
+- Compact full-width layout
+- Adjustable castbar height
 
 Only active castbars are animated every rendered frame.
 
@@ -122,7 +132,7 @@ Other debuffs continue to follow the normal tracking rules.
 
 Adjust the size of your Blizzard nameplates directly through BNP.
 
-**Range:** `0.5 – 1.5`
+**Range:** `0.5 – 1.5`  
 **Default:** `1.0`
 
 ---
@@ -133,13 +143,13 @@ Vanilla nameplates can behave unpredictably when units disappear, die or move in
 
 BNP includes several safeguards for this:
 
-* GUID-based aura tracking
-* Same-name enemies remain separated
-* Killing one mob does not remove debuffs from another mob with the same name
-* Conservative DoT and curse removal
-* Protection against temporary incomplete aura information
-* GUID stability checks during nameplate recycling
-* Protection against brief **ghost debuffs** when units move behind walls or out of line of sight
+- GUID-based aura tracking
+- Same-name enemies remain separated
+- Killing one mob does not remove debuffs from another mob with the same name
+- Conservative DoT and curse removal
+- Protection against temporary incomplete aura information
+- GUID stability checks during nameplate recycling
+- Protection against brief **ghost debuffs** when units move behind walls or out of line of sight
 
 ---
 
@@ -151,11 +161,11 @@ BNP includes several safeguards for this:
 
 SuperWoW provides the additional GUID and unit information required for reliable:
 
-* Multi-target debuff tracking
-* Nameplate identification
-* Castbars
-* Aura confirmation
-* Nameplate state handling
+- Multi-target debuff tracking
+- Nameplate identification
+- Castbars
+- Aura confirmation
+- Nameplate state handling
 
 Without SuperWoW, Blizz Nameplates+ is **not supported**.
 
@@ -186,24 +196,30 @@ Open the configuration menu using the **BN+ minimap button** or type:
 
 ## Available Options
 
-* **Nameplate Scale**
-* **Debuff Icon Size**
-* **Class Colors**
-* **Castbars**
-* **Castbar Height**
-* **Tank Mode**
-* **Health %**
-* **Target Glow**
-* **Target Glow Color**
-* **Target Plate on Top**
+- **Nameplate Scale**
+- **Debuff Icon Size**
+- **Class Colors**
+- **Castbars**
+- **Castbar Height**
+- **Tank Mode**
+- **Health Text**
+- **Target Glow**
+- **Target Glow Color**
+- **Target Plate on Top**
+
+Both **Health Text** and **Target Glow Color** use compact dropdown menus.
 
 Changes are applied immediately.
 
 ---
 
-# 🔎 Missing Spell Reporting
+# 🔎 Missing Spell & Aura Reporting
 
 Playing on a server with custom spells or noticed that BNP is missing a debuff?
+
+BNP includes diagnostic tools to make missing effects easy to identify.
+
+## 🧪 Unknown Spell Collector
 
 Use:
 
@@ -223,63 +239,83 @@ To clear the collected information:
 
 ---
 
+## 🔬 Target Aura Scan
+
+If a missing debuff is **currently active on your target**, use:
+
+`/bnp auras`
+
+BNP will scan the target's currently active negative auras and display:
+
+- **Spell ID**
+- **Aura name**
+- **Stack count**
+- **Debuff type**
+
+For best results, use `/bnp auras` **while the missing debuff is still active** and send a screenshot of the chat output.
+
+This is especially useful for **talent procs, custom server abilities and effects that are not detected by the normal unknown spell collector**.
+
+---
+
 # ⚡ Performance
 
 Blizz Nameplates+ is designed to keep permanent background work low.
 
-* Aura confirmation work runs only when required
-* No additional permanent scan for Target Glow
-* Foreign-tag detection uses existing nameplate information
-* Only active castbars animate every rendered frame
-* Cast discovery is throttled
-* Timer text updates only when the displayed value changes
-* GUID stability protection does not add additional aura scans
+- Aura confirmation work runs only when required
+- No additional permanent scan for Target Glow
+- Foreign-tag detection uses existing nameplate information
+- Only active castbars animate every rendered frame
+- Cast discovery is throttled
+- Timer text updates only when the displayed value changes
+- GUID stability protection does not add additional aura scans
 
 The goal is to provide additional nameplate information while keeping the addon suitable for **raids, battlegrounds and other situations with many visible units**.
 
 ---
 
-# 🚀 What's New in v1.0.3
+# 🚀 What's New in v1.0.4
 
-### 🎯 Target Glow
+## 🌑 Shadow Vulnerability
 
-Added a configurable target highlight with **six color presets**.
+Added support for the Warlock talent proc **Shadow Vulnerability**.
 
-### ⚔️ Foreign Tagged Mobs
+- Correct **10-second duration**
+- Detects the actual Shadow Vulnerability aura
+- Supports refreshes when the effect procs again while already active
 
-Mobs tagged outside your party or raid now use a **grey healthbar**.
+---
 
-### 🏹 Shared Hunter's Mark
+## ❤️ Health Text
 
-Hunter's Mark from other Hunters can now be displayed.
+Expanded the original Health % feature with multiple display modes:
 
-### 🛡️ Debuff Stacks
+**Off • Percent • HP • HP + Percent**
 
-Added stack counters for genuinely stacking debuffs.
+Large health values are automatically displayed in a compact format.
 
-### 🩸 Improved Debuff Reliability
+---
 
-Improved handling of **Miss, Dodge, Resist, Immune and Evade**.
+## 🎛️ Cleaner Configuration
 
-### 💀 Same-Name Death Fix
+Improved the configuration menu with compact dropdown selectors for:
 
-Killing one mob no longer removes tracked debuffs from surviving mobs with the same name.
+- **Health Text**
+- **Target Glow Color**
 
-### 🔍 GUID Stability
+This keeps the configuration panel smaller and easier to navigate.
 
-Added protection against brief **ghost debuffs** caused by nameplate recycling and line-of-sight changes.
+---
 
-### ❤️ Health %
+## 🔬 Target Aura Scanner
 
-Added optional health percentage text inside the healthbar.
+Added the new diagnostic command:
 
-### ⬆️ Target Plate on Top
+`/bnp auras`
 
-Your current target can optionally be raised above overlapping nameplates.
+It displays all currently detected negative auras on your target together with their **Spell ID, name, stack count and debuff type**.
 
-### 🔮 Castbar Improvements
-
-Improved castbar layout and performance.
+This makes identifying missing custom spells and talent procs significantly easier.
 
 ---
 
