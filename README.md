@@ -4,7 +4,7 @@
 
 It adds modern quality-of-life features such as **multi-target debuff tracking, castbars, target highlighting, health information, class colors and Tank Mode** without replacing the original Blizzard nameplate design.
 
-**Current Version:** `v1.0.4`  
+**Current Version:** `v1.0.5`  
 **Required:** `SuperWoW`
 
 ---
