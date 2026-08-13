@@ -118,15 +118,6 @@ Debuffs, castbars and health information remain clearly readable.
 
 ---
 
-## 🏹 Shared Hunter's Mark
-
-**Hunter's Mark** is supported as a special shared debuff.
-
-A Hunter's Mark applied by another Hunter can also be displayed on the nameplate.
-
-Other debuffs continue to follow the normal tracking rules.
-
----
 
 ## 📏 Nameplate Scaling
 
