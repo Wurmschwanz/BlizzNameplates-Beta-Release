@@ -2,10 +2,146 @@
 
 **Blizz Nameplates+** enhances the original Blizzard nameplates for **Vanilla WoW / 1.12** while keeping their classic look and feel.
 
-It adds modern quality-of-life features such as **multi-target debuff tracking, castbars, target highlighting, health information, class colors and Tank Mode** without replacing the original Blizzard nameplate design.
+It adds modern quality-of-life features such as **multi-target debuff tracking, crowd control tracking, castbars, combo points, target highlighting, health information, class colors and Tank Mode** without replacing the original Blizzard nameplate design.
 
-**Current Version:** `v1.0.5`  
+**Current Version:** `v1.0.6`  
 **Required:** `SuperWoW`
+
+---
+
+# 🛠️ What's New in v1.0.6
+
+## 🔴 Blizzard Combo Points
+
+Added optional **Combo Points directly above enemy nameplates** for:
+
+- Rogue
+- Druid
+
+The feature uses the original **Blizzard TargetFrame combo point artwork** instead of custom graphics.
+
+Combo Points automatically follow your current target and are positioned so they do not overlap with debuffs or Crowd Control effects.
+
+---
+
+## 🧠 Improved Resist & Failed Cast Handling
+
+Debuff tracking has received additional safeguards against false icons after unsuccessful casts.
+
+BNP now keeps a short rollback state for recent aura applications and refreshes.
+
+This helps correctly handle:
+
+- **Resist**
+- **Miss**
+- **Immune**
+- **Evade**
+- Failed casts
+- Failed debuff refreshes
+
+If a refresh fails, BNP can restore the previously active timer instead of incorrectly replacing or removing it.
+
+Additional protection was also added for effects that require strict live-aura confirmation, including many:
+
+- Crowd Control effects
+- Stuns
+- Roots
+- Traps
+- Talent procs
+- Poisons
+- Secondary effects
+
+Warlock curses continue to use stricter aura confirmation due to server-specific mechanics where multiple curse effects can succeed or resist independently.
+
+---
+
+## 🧊 Separate Crowd Control Tracking
+
+Crowd Control can now be handled independently from normal debuffs.
+
+The configuration menu contains separate options for:
+
+- **Debuffs**
+- **Crowd Control**
+
+This allows players to disable normal DoTs/debuffs while keeping important Crowd Control effects visible, or vice versa.
+
+---
+
+## 📊 Separate CC Row
+
+Crowd Control can optionally be displayed in its own row.
+
+When enabled, the layout is:
+
+**Crowd Control**  
+**Debuffs / DoTs**  
+**Combo Points** *(Rogue / Druid)*  
+**Nameplate**
+
+This keeps important CC effects visually separated from normal DoTs and debuffs.
+
+The layout automatically accounts for Rogue and Druid Combo Points to prevent overlapping elements.
+
+The separate row works in both **PvE and PvP**.
+
+---
+
+## 👥 Crowd Control from Other Players
+
+BNP can optionally display supported Crowd Control effects applied by **other players**.
+
+Unlike your own normal debuffs, foreign CCs are only displayed when the corresponding aura is actually present on the unit.
+
+This is especially useful for quickly seeing effects such as:
+
+- Fear
+- Polymorph
+- Stuns
+- Roots
+- Sap
+- Blind
+- Traps
+- Silence
+- Banish
+- Similar supported Crowd Control effects
+
+This option works on both player and NPC nameplates.
+
+---
+
+## 🎛️ Reorganized Configuration Menu
+
+The configuration menu has been reorganized into clearer sections.
+
+### Nameplates
+
+- Nameplate Scale
+- Class Colors
+- Tank Mode
+- Health Text
+- Target Glow
+- Target Glow Color
+- Target Plate on Top
+
+### Auras
+
+- Aura Icon Size
+- Debuffs
+- Crowd Control
+  - Display CCs in Separate Row
+  - Show CCs from Other Players
+
+### Castbar
+
+- Castbars
+- Castbar Height
+
+### Class Features
+
+- Combo Points *(Rogue / Druid only)*
+
+Options that depend on another feature are visually grouped together to make the menu easier to understand.
 
 ---
 
@@ -17,19 +153,59 @@ Track your own debuffs directly above enemy nameplates.
 
 - GUID-based multi-target tracking
 - Up to **8 active debuffs** per nameplate
-- DoTs, curses, CC, roots, traps, stuns and other supported effects
+- DoTs, curses, roots, traps, stuns and other supported effects
 - Numeric countdown timers
 - Compact minute timers for long effects
 - Stack counters for genuinely stacking debuffs
 - Debuffs stay attached to the correct enemy when switching targets
 - Same-name enemies are tracked independently
 - Early removal when supported effects are dispelled or broken
+- Failed applications can be rolled back when detected
+- Failed refreshes can restore the previously valid timer
 
-Failed attacks are handled correctly:
+BNP includes handling for unsuccessful attacks and casts such as:
 
 **Miss • Dodge • Resist • Immune • Evade**
 
-They will **not** create false debuff timers.
+Additional live-aura confirmation is used for effects where cast information alone is not reliable enough.
+
+---
+
+## 🧊 Crowd Control
+
+Crowd Control tracking can be enabled independently from normal debuffs.
+
+Supported types include effects such as:
+
+- Fear
+- Stuns
+- Roots
+- Polymorph
+- Sap
+- Blind
+- Silence
+- Traps
+- Banish
+- Similar supported control effects
+
+CCs can either share the normal aura row or be displayed in a dedicated row above your regular debuffs.
+
+BNP can also optionally display supported **Crowd Control effects from other players**.
+
+---
+
+## 🔴 Combo Points
+
+Rogues and Druids can optionally display their current target's Combo Points directly above the nameplate.
+
+- Uses the original Blizzard TargetFrame Combo Point artwork
+- Displays up to **5 Combo Points**
+- Only appears on your current target
+- Automatically updates when Combo Points change
+- Automatically hides when switching targets
+- Aura rows automatically account for the Combo Point area
+
+The feature keeps the original Vanilla visual style instead of replacing the Combo Points with custom graphics.
 
 ---
 
@@ -73,6 +249,7 @@ See enemy casts directly underneath their nameplates.
 - Smooth animation
 - Compact full-width layout
 - Adjustable castbar height
+- Spell icon remains separated from the castbar itself
 
 Only active castbars are animated every rendered frame.
 
@@ -114,10 +291,9 @@ Overlapping nameplates?
 
 Enable **Target Plate on Top** to raise your current target above surrounding plates.
 
-Debuffs, castbars and health information remain clearly readable.
+Debuffs, Crowd Control, castbars and health information remain clearly readable.
 
 ---
-
 
 ## 📏 Nameplate Scaling
 
@@ -141,6 +317,11 @@ BNP includes several safeguards for this:
 - Protection against temporary incomplete aura information
 - GUID stability checks during nameplate recycling
 - Protection against brief **ghost debuffs** when units move behind walls or out of line of sight
+- Boss / NPC reset cleanup
+- Failed-cast rollback protection
+- Failed refresh restoration
+- Strict live-aura confirmation for sensitive effects
+- Separate handling for normal debuffs and Crowd Control
 
 ---
 
@@ -156,6 +337,7 @@ SuperWoW provides the additional GUID and unit information required for reliable
 - Nameplate identification
 - Castbars
 - Aura confirmation
+- Crowd Control tracking
 - Nameplate state handling
 
 Without SuperWoW, Blizz Nameplates+ is **not supported**.
@@ -185,20 +367,36 @@ Open the configuration menu using the **BN+ minimap button** or type:
 
 `/bnp`
 
-## Available Options
+## Nameplates
 
 - **Nameplate Scale**
-- **Debuff Icon Size**
 - **Class Colors**
-- **Castbars**
-- **Castbar Height**
 - **Tank Mode**
 - **Health Text**
 - **Target Glow**
 - **Target Glow Color**
 - **Target Plate on Top**
 
+## Auras
+
+- **Aura Icon Size**
+- **Debuffs**
+- **Crowd Control**
+- **Display CCs in Separate Row**
+- **Show CCs from Other Players**
+
+## Castbar
+
+- **Castbars**
+- **Castbar Height**
+
+## Class Features
+
+- **Combo Points** *(Rogue / Druid)*
+
 Both **Health Text** and **Target Glow Color** use compact dropdown menus.
+
+Dependent options are grouped together to make their purpose easier to understand.
 
 Changes are applied immediately.
 
@@ -260,12 +458,15 @@ Blizz Nameplates+ is designed to keep permanent background work low.
 - Cast discovery is throttled
 - Timer text updates only when the displayed value changes
 - GUID stability protection does not add additional aura scans
+- Foreign Crowd Control uses throttled live-aura checks
+- Foreign CC tracking is kept separate from your own DoT tracking
+- Disabled display categories do not create additional visual work
 
 The goal is to provide additional nameplate information while keeping the addon suitable for **raids, battlegrounds and other situations with many visible units**.
 
 ---
 
-# 🚀 What's New in v1.0.4
+# 📜 Previous Update – v1.0.4
 
 ## 🌑 Shadow Vulnerability
 
@@ -294,13 +495,11 @@ Improved the configuration menu with compact dropdown selectors for:
 - **Health Text**
 - **Target Glow Color**
 
-This keeps the configuration panel smaller and easier to navigate.
-
 ---
 
 ## 🔬 Target Aura Scanner
 
-Added the new diagnostic command:
+Added the diagnostic command:
 
 `/bnp auras`
 
